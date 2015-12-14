@@ -1,0 +1,145 @@
+//Center content
+.center{
+	margin:0 auto;
+}
+
+//Overrides to deafult buttons:
+
+.btn-default{
+	padding:6px 45px;
+	border-radius:0;
+}
+
+//Mixin to include custom fonts
+
+@mixin declare-font-face($font-family, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal) {
+	@font-face {
+		font-family: '#{$font-family}';
+		src: url('../assets/fonts/montserrat/#{$font-filename}.eot');
+		src: url('../assets/fonts/montserrat/#{$font-filename}.eot?#iefix') format('embedded-opentype'),
+		url('../assets/fonts/montserrat/#{$font-filename}.woff') format('woff'),
+		url('../assets/fonts/montserrat/#{$font-filename}.ttf') format('truetype'),
+		url('../assets/fonts/montserrat/#{$font-filename}.svg##{$font-family}') format('svg');
+		font-weight: $font-weight;
+		font-style: $font-style;
+		font-stretch: $font-stretch;
+	}
+}
+
+@include declare-font-face('montserratbold', 'montserrat-bold-webfont');
+@include declare-font-face('montserratlight', 'montserrat-light-webfont');
+@include declare-font-face('montserratregular', 'montserrat-regular-webfont');
+
+//Container with relative position
+.container-relative{
+	position:relative;
+}
+
+//Registration form custom rules
+
+.registration-form{
+	display:table;
+	position:absolute;
+	bottom:10%;
+	padding:0 25px;
+	left:50%;
+	@include translate(-50%,0);
+	min-height:145px;
+	background:url('../images/form-bg.png');
+	
+	form{
+		display:table-cell;
+		vertical-align:middle;
+		
+	}
+}
+
+//Centered registration tabs
+
+.centered-tabs{
+	text-align:center;
+	border-bottom:1px solid #ddd;
+	height:41px;
+	
+	ul{
+		display:inline-block;
+		border-bottom:1px solid #ddd;
+	}
+	
+	li{
+		display:inline;
+		&:hover,
+		&.active{
+			a:before{
+			position:absolute;
+			content:"";
+			bottom:0;
+			left:0;
+			background:#278ada;
+			height:7px;
+			width:100%
+			
+		}
+		}
+	}
+	
+	
+	a{
+		float:left;
+	}
+}
+
+//Tab containers
+
+.tab-content{
+	margin-bottom:30px;
+}
+
+.information-paragraph{
+	font-size:18px;
+	padding:0 30px;
+}
+
+//Features container-get-started
+
+.tab-content{
+	.row{
+		.container-feature{
+			border: 1px solid #e4e4e4;
+			box-shadow: 3px 3px 3px #ececec;
+			padding: 40px 55px;
+			min-height:330px;
+		}
+	}
+}
+
+//Mixin for the features images
+
+@mixin feature-image($container-id, $image-file-name,$width: 0, $height: 0, $position-x : 0, $position-y : 0, $repeat : no-repeat) {
+	#{$container-id}{
+		width:#{$width};
+		height:#{$height};
+		background-image:url('../images/content/#{$image-file-name}');
+		background-repeat:#{$repeat};
+		background-position:#{$position-x} #{$position-y};
+		margin:0 auto;
+		margin-bottom:20px;
+	}
+}
+
+@include feature-image('#bars','icons.png','76px','66px');
+@include feature-image('#book','icons.png','76px','66px', '-76px');
+@include feature-image('#bell','icons.png','76px','66px', '-153px');
+@include feature-image('#dashboard','icons.png','80px','66px', '-229px');
+
+
+//Get started button
+
+.container-get-started{
+	text-align:center;
+	margin-bottom:30px;
+	
+	a{
+		display:inline-block;
+	}
+}
